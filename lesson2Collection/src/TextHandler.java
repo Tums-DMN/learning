@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class TextHandler {
@@ -45,9 +47,18 @@ public class TextHandler {
         }
     }
 
-    public void stringOrder(){
-        int num = 3;
-        System.out.println("Строка " + num + " :\n" + strings.get(num-1));
+    public void stringOrder() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите номер строки: ");
+        try {
+            int num = scanner.nextInt();
+            if ((num < 1) || (num > strings.size())) {
+                System.out.println("Нет такой строки.");
+            } else System.out.println("Строка " + num + " :\n" + strings.get(num - 1));
+        }catch (Exception e) {
+                System.out.println("AVE CAESAR! Но вводить нужно арабские цифры");
+                this.stringOrder();
+            }
     }
 
 }
